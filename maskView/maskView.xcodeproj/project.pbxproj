@@ -15,6 +15,7 @@
 		276D82551D66D6E9008F8992 /* maskViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276D82541D66D6E9008F8992 /* maskViewTests.swift */; };
 		276D82601D66D6E9008F8992 /* maskViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276D825F1D66D6E9008F8992 /* maskViewUITests.swift */; };
 		276D82B21D68A625008F8992 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276D82B11D68A625008F8992 /* UIImageExtension.swift */; };
+		276D82B51D68A951008F8992 /* MaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276D82B41D68A951008F8992 /* MaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		276D825F1D66D6E9008F8992 /* maskViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = maskViewUITests.swift; sourceTree = "<group>"; };
 		276D82611D66D6E9008F8992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		276D82B11D68A625008F8992 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		276D82B41D68A951008F8992 /* MaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaskView.swift; path = Class/MaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		276D823E1D66D6E9008F8992 /* maskView */ = {
 			isa = PBXGroup;
 			children = (
+				276D82B31D68A92A008F8992 /* Class */,
 				276D823F1D66D6E9008F8992 /* AppDelegate.swift */,
 				276D82411D66D6E9008F8992 /* ViewController.swift */,
 				276D82431D66D6E9008F8992 /* Main.storyboard */,
@@ -126,6 +129,14 @@
 				276D82611D66D6E9008F8992 /* Info.plist */,
 			);
 			path = maskViewUITests;
+			sourceTree = "<group>";
+		};
+		276D82B31D68A92A008F8992 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				276D82B41D68A951008F8992 /* MaskView.swift */,
+			);
+			name = Class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				276D82B51D68A951008F8992 /* MaskView.swift in Sources */,
 				276D82421D66D6E9008F8992 /* ViewController.swift in Sources */,
 				276D82401D66D6E9008F8992 /* AppDelegate.swift in Sources */,
 				276D82B21D68A625008F8992 /* UIImageExtension.swift in Sources */,
