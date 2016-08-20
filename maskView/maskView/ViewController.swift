@@ -142,11 +142,16 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
 //        将界面用背景图先渲染一边
         backgroundImage?.drawInRect(CGRect.init(x: 0, y: 0, width: (touchView?.frame.width)!, height: (touchView?.frame.height)!))
         
+//        抠出中间那一块
+        
+        
 //        将内容图片绘制到对应的位置
         let offsetX = maskText1.frame.origin.x - (touchView?.frame.origin.x)!
         let offsetY = maskText1.frame.origin.y - (touchView?.frame.origin.y)!
         
-        contentImage.drawInRect(CGRect.init(x: offsetX, y: offsetY, width: maskText1.frame.width, height: maskText2.frame.height))
+        contentImage.deleteImage.drawInRect(CGRect.init(x: offsetX, y: offsetY, width: maskText1.frame.width, height: maskText2.frame.height))
+        
+        contentImage.useImage.drawInRect(CGRect.init(x: offsetX, y: offsetY, width: maskText1.frame.width, height: maskText2.frame.height))
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         
@@ -157,7 +162,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
         showImageView.image = image
     }
     
-    func getMaskImage() -> UIImage{
+    func getMaskImage() -> (useImage:UIImage,deleteImage:UIImage){
         UIGraphicsBeginImageContextWithOptions((maskText1.frame.size), false, 2)
         
         let tempContext = UIGraphicsGetCurrentContext()
@@ -166,11 +171,6 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
         let offsetX = (touchView?.frame.origin.x)! - maskText1.frame.origin.x
         let offsetY = (touchView?.frame.origin.y)! - maskText1.frame.origin.y
         
-//        先绘制背景
-        backgroundImage?.drawInRect(CGRect.init(x: offsetX, y: offsetY, width: (touchView?.frame.width)!, height: (touchView?.frame.height)!))
-        
-//        获得当前的图片
-        let backImage = UIGraphicsGetImageFromCurrentImageContext()
         
 //        绘制文字
         let temp = UILabel.init(frame:maskText1.frame)
@@ -184,11 +184,26 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
         
         UIGraphicsEndImageContext()
         
-        self.imageView.image = currentImage
         
-        return currentImage
+        
+        UIGraphicsBeginImageContextWithOptions((maskText1.frame.size), false, 2)
+        
+//        绘制背景
+        backgroundImage?.drawInRect(CGRect.init(x: offsetX, y: offsetY, width: (touchView?.frame.width)!, height: (touchView?.frame.height)!))
+        
+//        获得当前的图片
+        let backImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        
+        UIGraphicsEndImageContext()
+        
+        let result = maskImage(backImage, mask: currentImage)
+        
+        self.imageView.image = result
+        self.imageView.backgroundColor = UIColor.greenColor()
+        
+        return (result,backImage.imageReplaceColor(UIColor.whiteColor()))
     }
-    
     
     func maskImage(image:UIImage, mask:(UIImage))->UIImage{
         

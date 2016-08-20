@@ -14,6 +14,7 @@
 		276D824A1D66D6E9008F8992 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 276D82481D66D6E9008F8992 /* LaunchScreen.storyboard */; };
 		276D82551D66D6E9008F8992 /* maskViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276D82541D66D6E9008F8992 /* maskViewTests.swift */; };
 		276D82601D66D6E9008F8992 /* maskViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276D825F1D66D6E9008F8992 /* maskViewUITests.swift */; };
+		276D82B21D68A625008F8992 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276D82B11D68A625008F8992 /* UIImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		276D825B1D66D6E9008F8992 /* maskViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = maskViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		276D825F1D66D6E9008F8992 /* maskViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = maskViewUITests.swift; sourceTree = "<group>"; };
 		276D82611D66D6E9008F8992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		276D82B11D68A625008F8992 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				276D82461D66D6E9008F8992 /* Assets.xcassets */,
 				276D82481D66D6E9008F8992 /* LaunchScreen.storyboard */,
 				276D824B1D66D6E9008F8992 /* Info.plist */,
+				276D82B11D68A625008F8992 /* UIImageExtension.swift */,
 			);
 			path = maskView;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				276D82421D66D6E9008F8992 /* ViewController.swift in Sources */,
 				276D82401D66D6E9008F8992 /* AppDelegate.swift in Sources */,
+				276D82B21D68A625008F8992 /* UIImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +491,7 @@
 				276D82661D66D6E9008F8992 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		276D82671D66D6E9008F8992 /* Build configuration list for PBXNativeTarget "maskViewTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +500,7 @@
 				276D82691D66D6E9008F8992 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		276D826A1D66D6E9008F8992 /* Build configuration list for PBXNativeTarget "maskViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +509,7 @@
 				276D826C1D66D6E9008F8992 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
