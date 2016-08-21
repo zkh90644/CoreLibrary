@@ -13,14 +13,13 @@ enum MyError: ErrorType {
 }
 
 class MaskView: UIImageView {
-    var backgroundImage:UIImage
+    var backgroundImage:UIImage?
     var maskViewArray:[UILabel]
     
 //    用于存储遮住图片在moveView中的移动位置
     private var infoArray:Array<(offset:CGPoint,image:UIImage,label:UILabel)>
     
     override init(frame: CGRect) {
-        backgroundImage = UIImage()
         maskViewArray = []
         infoArray = []
         
@@ -29,13 +28,16 @@ class MaskView: UIImageView {
         self.userInteractionEnabled = true
     }
     
-    
     convenience init(image:UIImage,frame:CGRect) {
         self.init(frame:frame)
         
         self.image = image
         backgroundImage = image
     }
+    
+//    convenience init(image:UIImage){
+//        self.init(image:image,frame: CGRect.zero)
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -49,7 +51,7 @@ class MaskView: UIImageView {
      * @date     2016-8-21
      * @author   zkh90644@gmail.com
      */
-    func changeMoveImage() {
+    func changeMoveImage()throws {
         
         var flag = false
         infoArray = []
@@ -60,7 +62,7 @@ class MaskView: UIImageView {
                 self.frame.origin.x + self.frame.width >= item.frame.origin.x &&
                 self.frame.origin.x < item.frame.origin.x + item.frame.width{
                 
-                changeImage(item)
+                try changeImage(item)
                 flag = true
             }
         }
@@ -70,7 +72,12 @@ class MaskView: UIImageView {
             UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 2)
             
             //        将界面用背景图先渲染一边
-            backgroundImage.drawInRect(CGRect.init(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+            guard backgroundImage != nil else{
+                print("背景图片不存在,self.backgroundImage Not Exist")
+                throw MyError.ImageNotExist
+            }
+            
+            backgroundImage!.drawInRect(CGRect.init(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
             
             for item in infoArray {
                 item.image.drawInRect(CGRect.init(x: item.offset.x, y: item.offset.y, width: item.label.frame.width, height: item.label.frame.height))
@@ -84,6 +91,10 @@ class MaskView: UIImageView {
             self.image = image
             
         }else{
+            guard backgroundImage != nil else{
+                print("背景图片不存在,self.backgroundImage Not Exist")
+                throw MyError.ImageNotExist
+            }
             self.image = backgroundImage
         }
     }
@@ -97,14 +108,14 @@ class MaskView: UIImageView {
      * @date     2016-8-21
      * @author   zkh90644@gmail.com
      */
-    func changeImage(label:UILabel){
+    func changeImage(label:UILabel)throws{
         
         //        将内容图片绘制到对应的位置
         let offsetX = label.frame.origin.x - self.frame.origin.x
         let offsetY = label.frame.origin.y - self.frame.origin.y
         
         //        创建对应图片在当前位置的修改图
-        let contentImage = getMaskImage(label,offset: CGSize.init(width: -offsetX, height: -offsetY))
+        let contentImage = try getMaskImage(label,offset: CGSize.init(width: -offsetX, height: -offsetY))
         
         self.infoArray.append((CGPoint.init(x: offsetX, y: offsetY),contentImage,label))
     }
@@ -120,7 +131,7 @@ class MaskView: UIImageView {
      * @date     2016-8-21
      * @author   zkh90644@gmail.com
      */
-    func getMaskImage(label:UILabel,offset:CGSize) -> UIImage{
+    func getMaskImage(label:UILabel,offset:CGSize)throws -> UIImage{
         
         //        获得问题字图片
         UIGraphicsBeginImageContextWithOptions((label.frame.size), false, 2)
@@ -142,7 +153,11 @@ class MaskView: UIImageView {
         //        获得需要扣掉的图片
         UIGraphicsBeginImageContextWithOptions((label.frame.size), false, 2)
         
-        backgroundImage.drawInRect(CGRect.init(x: offset.width, y: offset.height, width: self.frame.width, height: self.frame.height))
+        guard backgroundImage != nil else{
+            print("背景图片不存在,self.backgroundImage Not Exist")
+            throw MyError.ImageNotExist
+        }
+        backgroundImage!.drawInRect(CGRect.init(x: offset.width, y: offset.height, width: self.frame.width, height: self.frame.height))
         
         let backImage = UIGraphicsGetImageFromCurrentImageContext()
         

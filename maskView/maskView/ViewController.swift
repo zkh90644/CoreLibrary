@@ -28,7 +28,10 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        touchView = MaskView.init(image: UIImage.init(named: "1")!, frame: CGRect.init(origin: CGPoint(x: 0,y: 0), size: CGSize(width: 100, height: 50)))
+        touchView = MaskView.init(frame: CGRect.init(origin: CGPoint(x: 0,y: 0), size: CGSize(width: 100, height: 50)))
+        
+        touchView?.image = UIImage.init(named: "1")
+        touchView?.backgroundImage = touchView?.image
         
 //        添加到父View
         self.view.addSubview(touchView!)
@@ -44,10 +47,10 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
     }
     
 //    移动效果
-    func move(gesture:UIPanGestureRecognizer) {
+    func move(gesture:UIPanGestureRecognizer)throws {
         touchView?.center = gesture.locationInView(self.view)
         
-        touchView?.changeMoveImage()
+        try touchView?.changeMoveImage()
 
     }
 }
