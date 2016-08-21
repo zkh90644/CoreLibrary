@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>ASMaskImageView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>ASMaskImageViewDemo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>276D82FD1D69FB06008F8992</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>276D83071D69FB06008F8992</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>276D831D1D69FBD3008F8992</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>276D83301D69FBD3008F8992</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>276D833B1D69FBD3008F8992</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
